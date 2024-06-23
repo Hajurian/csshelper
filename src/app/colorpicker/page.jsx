@@ -6,7 +6,8 @@ export default function ColorPage() {
   return (
     <main className="w-screen h-screen flex justify-center">
       <div className="w-4/5 h-full flex justify-center">
-        <div className="w-1/3 h-full">
+        <div className="w-1/3 h-full flex flex-col">
+          <div className="w-32 h-32 mx-auto mb-16 border-2">Color picker</div>
           <ColorPicker hideInput={["hsv"]} color={color} onChange={setColor} />
           <div className="w-full flex justify-center">
             <button
