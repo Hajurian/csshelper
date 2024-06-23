@@ -16,8 +16,34 @@ export default function BoxShadow() {
           blurRad={blurRad}
           blurSpread={blurSpread}
         />
-        <TextBox />
-        <div>Buttons</div>
+        <TextBox
+          shadowX={shadowX}
+          shadowY={shadowY}
+          blurRad={blurRad}
+          blurSpread={blurSpread}
+        />
+        <div className="w-full h-16 mt-2 flex">
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(
+                `box-shadow: ${shadowX}px ${shadowY}px ${blurRad}px ${blurSpread}px rgba(0,0,0,1);`
+              );
+            }}
+            className="border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
+          >
+            Copy CSS
+          </button>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(
+                `shadow-[${shadowX}px_${shadowY}px_${blurRad}px_${blurSpread}px_rgba(0,0,0,1)]`
+              );
+            }}
+            className="border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
+          >
+            Copy Tailwind
+          </button>
+        </div>
       </div>
       <div className="w-1/2 p-8  flex flex-col items-center">
         <h1 className="text-center text-3xl pb-8 font-bold text-blue">
@@ -27,6 +53,12 @@ export default function BoxShadow() {
         <Input type="Vertical Length" state={shadowY} setState={setShadowY} />
         <Input type="Blur Radius" state={blurRad} setState={setBlurRad} />
         <Input type="Blur Spread" state={blurSpread} setState={setBlurSpread} />
+        <div className="w-1/2">
+          <label>Color</label>
+          <input type="text" />
+          <label>Inset</label>
+          <input type="checkbox" />
+        </div>
       </div>
     </>
   );
@@ -44,11 +76,17 @@ const Box = (props) => {
     </div>
   );
 };
-const TextBox = ({ text }) => {
+const TextBox = (props) => {
   return (
-    <div className="w-full h-32 bg-code border-x border-y rounded-3xl cursor-pointer hover:scale-105 transition-all">
-      <p className="text-white">Tailwind code</p>
-      <p className="text-white">CSS code</p>
+    <div className="w-full h-32 bg-code  rounded-3xl cursor-pointer p-4 hover:scale-105 transition-all inset-4 shadow-md shadow-code">
+      <p className="text-white text-xl leading-9">
+        <span className="text-code-text">box-shadow</span>: {props.shadowX}px{" "}
+        {props.shadowY}px {props.blurRad}px {props.blurSpread}px rgba(0,0,0,1);
+      </p>
+      <p className="text-white text-xl leading-9">
+        <span className="text-code-text ">shadow</span>-[{props.shadowX}px_
+        {props.shadowY}px_{props.blurRad}px_{props.blurSpread}px_rgba(0,0,0,1)]
+      </p>
     </div>
   );
 };
@@ -69,7 +107,7 @@ const Input = (props) => {
       </div>
       <input
         type="range"
-        className="w-1/2 accent-blue "
+        className="w-1/2 accent-blue mb-2"
         value={props.state}
         onChange={(e) => {
           props.setState(e.target.value);
