@@ -21,6 +21,7 @@ export default function RootLayout({ children }) {
           <div>
             <Link href="/gradient">Gradient</Link>
             <Link href="/boxshadow">Box Shadow</Link>
+            <Link href="/colorpicker">Color Picker</Link>
           </div>
           <button>Theme</button>
         </nav>
