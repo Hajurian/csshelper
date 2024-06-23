@@ -14,16 +14,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${roboto.className} bg-background overflow-hidden`}>
+    <html lang="en" className="box-border">
+      <body
+        className={`${roboto.className} bg-background m-0 p-0 overflow-x-hidden`}
+      >
         <nav className="w-full h-28 flex items-center">
-          <Link href="/">CSS Helper</Link>
+          <Link href="/ ">CSS Simple</Link>
           <div>
             <Link href="/gradient">Gradient</Link>
             <Link href="/boxshadow">Box Shadow</Link>
             <Link href="/colorpicker">Color Picker</Link>
           </div>
-          <button>Theme</button>
         </nav>
         {children}
       </body>

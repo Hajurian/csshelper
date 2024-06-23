@@ -1,12 +1,15 @@
 "use client";
-
 import { useState } from "react";
+import { ColorPicker, useColor } from "react-color-palette";
+import "react-color-palette/css";
 
 export default function BoxShadow() {
   const [shadowX, setShadowX] = useState("0");
   const [shadowY, setShadowY] = useState("0");
   const [blurRad, setBlurRad] = useState("0");
   const [blurSpread, setBlurSpread] = useState("0");
+  const [color, setColor] = useColor("#000000");
+  const [inset, setInset] = useState(false);
   return (
     <>
       <div className="w-1/2 p-8 flex flex-col items-center">
@@ -15,12 +18,16 @@ export default function BoxShadow() {
           shadowY={shadowY}
           blurRad={blurRad}
           blurSpread={blurSpread}
+          inset={inset}
+          color={color}
         />
         <TextBox
           shadowX={shadowX}
           shadowY={shadowY}
           blurRad={blurRad}
           blurSpread={blurSpread}
+          inset={inset}
+          color={color}
         />
         <div className="w-full h-16 mt-2 flex">
           <button
@@ -53,11 +60,20 @@ export default function BoxShadow() {
         <Input type="Vertical Length" state={shadowY} setState={setShadowY} />
         <Input type="Blur Radius" state={blurRad} setState={setBlurRad} />
         <Input type="Blur Spread" state={blurSpread} setState={setBlurSpread} />
-        <div className="w-1/2">
-          <label>Color</label>
-          <input type="text" />
-          <label>Inset</label>
-          <input type="checkbox" />
+        <div className="w-1/2 flex flex-col">
+          <div className="flex">
+            <label className="text-lg mr-auto">Color</label>
+            <label className="text-lg mr-2">Inset</label>
+            <input
+              type="checkbox"
+              checked={inset}
+              onClick={() => {
+                setInset(!inset);
+              }}
+              className="mr-auto accent-blue"
+            />
+          </div>
+          <ColorPicker hideInput={["hsv"]} color={color} onChange={setColor} />
         </div>
       </div>
     </>
@@ -69,7 +85,11 @@ const Box = (props) => {
     <div
       className={`w-2/5 h-1/3 mb-32 border-2 border-code flex justify-center items-center text-2xl cursor-pointer hover:scale-105 transition-all text-blue `}
       style={{
-        boxShadow: `${props.shadowX}px ${props.shadowY}px ${props.blurRad}px ${props.blurSpread}px rgba(0,0,0,1)`,
+        boxShadow: `${props.shadowX}px ${props.shadowY}px ${props.blurRad}px ${
+          props.blurSpread
+        }px rgba(${props.color.rgb.r},${props.color.rgb.g},${
+          props.color.rgb.b
+        },${props.color.rgb.a}) ${props.inset ? "inset" : ""}`,
       }}
     >
       Container
@@ -81,11 +101,19 @@ const TextBox = (props) => {
     <div className="w-full h-32 bg-code  rounded-3xl cursor-pointer p-4 hover:scale-105 transition-all inset-4 shadow-md shadow-code">
       <p className="text-white text-xl leading-9">
         <span className="text-code-text">box-shadow</span>: {props.shadowX}px{" "}
-        {props.shadowY}px {props.blurRad}px {props.blurSpread}px rgba(0,0,0,1);
+        {props.shadowY}px {props.blurRad}px {props.blurSpread}px rgba(
+        {Math.floor(props.color.rgb.r)},{Math.floor(props.color.rgb.g)},
+        {Math.floor(props.color.rgb.b)},
+        {Math.round(props.color.rgb.a * 100) / 100}){" "}
+        {props.inset ? "inset" : ""};
       </p>
       <p className="text-white text-xl leading-9">
         <span className="text-code-text ">shadow</span>-[{props.shadowX}px_
-        {props.shadowY}px_{props.blurRad}px_{props.blurSpread}px_rgba(0,0,0,1)]
+        {props.shadowY}px_{props.blurRad}px_{props.blurSpread}px_rgba(
+        {Math.floor(props.color.rgb.r)},{Math.floor(props.color.rgb.g)},
+        {Math.floor(props.color.rgb.b)},
+        {Math.round(props.color.rgb.a * 100) / 100})
+        {props.inset ? "_inset" : ""}]
       </p>
     </div>
   );
