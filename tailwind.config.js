@@ -14,6 +14,7 @@ module.exports = {
     },
     colors: {
       background: "#f2f2f2",
+      code: "#1E293B",
       blue: "#1fb6ff",
       purple: "#7e5bef",
       pink: "#ff49db",
@@ -23,6 +24,7 @@ module.exports = {
       "gray-dark": "#273444",
       gray: "#8492a6",
       "gray-light": "#d3dce6",
+      white: "#fff",
     },
   },
   plugins: [],

@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${roboto.className} bg-background overflow-hidden`}>
         <nav className="w-full h-28 flex items-center">
-          <h1>CSS Helper</h1>
+          <Link href="/">CSS Helper</Link>
           <div>
             <Link href="/gradient">Gradient</Link>
             <Link href="/boxshadow">Box Shadow</Link>
