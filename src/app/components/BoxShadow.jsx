@@ -12,7 +12,7 @@ export default function BoxShadow() {
   const [inset, setInset] = useState(false);
   return (
     <>
-      <div className="w-1/2 p-8 flex flex-col items-center">
+      <div className="w-1/2 p-8 mr-4 flex flex-col items-center border-2 border-gray-light rounded-md">
         <Box
           shadowX={shadowX}
           shadowY={shadowY}
@@ -52,7 +52,7 @@ export default function BoxShadow() {
           </button>
         </div>
       </div>
-      <div className="w-1/2 p-8  flex flex-col items-center">
+      <div className="w-1/2 p-6  flex flex-col items-center border-2 border-gray-light rounded-md">
         <h1 className="text-center text-3xl pb-8 font-bold text-blue">
           Box Shadow
         </h1>

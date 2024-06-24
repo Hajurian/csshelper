@@ -1,6 +1,6 @@
-import Link from "next/link";
 import "./globals.css";
 import { Roboto } from "next/font/google";
+import Navbar from "./components/NavBar";
 
 const roboto = Roboto({
   weight: "400",
@@ -18,16 +18,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${roboto.className} bg-background m-0 p-0 overflow-x-hidden`}
       >
-        <nav className="w-full h-28 flex items-center">
-          <Link href="/" className="mr-auto">
-            CSS Simple
-          </Link>
-          <div>
-            <Link href="/gradient">Gradient</Link>
-            <Link href="/boxshadow">Box Shadow</Link>
-            <Link href="/colorpicker">Color Picker</Link>
-          </div>
-        </nav>
+        <Navbar />
         {children}
       </body>
     </html>

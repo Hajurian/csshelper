@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .react-colorful {
-    @apply w-fit h-fit;
+  .links {
+    @apply flex justify-center items-center w-32 text-lg text-blue font-bold hover:bg-gray-light transition-all;
   }
 }
