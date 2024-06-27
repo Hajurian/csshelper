@@ -17,6 +17,7 @@ export default function Navbar() {
           src="/CSSsimple.png"
           width={400}
           height={200}
+          priority={true}
           alt={"CSS Simple"}
         />
       </Link>
