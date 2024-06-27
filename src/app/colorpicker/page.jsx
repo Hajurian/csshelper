@@ -5,7 +5,7 @@ export default function ColorPage() {
   const [color, setColor] = useColor("#000");
   return (
     <main className="w-screen h-screen flex justify-center">
-      <div className="w-4/5 h-full flex justify-center">
+      <section className="w-4/5 h-full flex justify-center">
         <div className="w-1/3 h-max p-8 flex flex-col border-2 border-gray-light rounded-md">
           <h1 className="text-center mb-4 text-3xl text-blue font-bold">
             Color Picker
@@ -19,7 +19,9 @@ export default function ColorPage() {
             <button
               onClick={() => {
                 navigator.clipboard.writeText(
-                  `rgb(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`
+                  `rgb(${Math.round(color.rgb.r)},${Math.round(
+                    color.rgb.g
+                  )},${Math.round(color.rgb.b)},${color.rgb.a})`
                 );
               }}
               className="border-2 w-1/3 mt-4 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
@@ -36,7 +38,7 @@ export default function ColorPage() {
             </button>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

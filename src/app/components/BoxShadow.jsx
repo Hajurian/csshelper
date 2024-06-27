@@ -12,7 +12,7 @@ export default function BoxShadow() {
   const [inset, setInset] = useState(false);
   return (
     <>
-      <div className="w-1/2 p-8 mr-4 flex flex-col items-center border-2 border-gray-light rounded-md">
+      <section className="w-1/2 p-8 mr-4 flex flex-col items-center border-2 border-gray-light rounded-md">
         <Box
           shadowX={shadowX}
           shadowY={shadowY}
@@ -33,7 +33,10 @@ export default function BoxShadow() {
           <button
             onClick={() => {
               navigator.clipboard.writeText(
-                `box-shadow: ${shadowX}px ${shadowY}px ${blurRad}px ${blurSpread}px rgba(0,0,0,1);`
+                `box-shadow: ${shadowX}px ${shadowY}px ${blurRad}px ${blurSpread}px rgba(
+                  ${Math.floor(color.rgb.r)},${Math.floor(color.rgb.g)},
+                  ${Math.floor(color.rgb.b)},
+                  ${Math.round(color.rgb.a * 100) / 100});`
               );
             }}
             className="border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
@@ -43,7 +46,10 @@ export default function BoxShadow() {
           <button
             onClick={() => {
               navigator.clipboard.writeText(
-                `shadow-[${shadowX}px_${shadowY}px_${blurRad}px_${blurSpread}px_rgba(0,0,0,1)]`
+                `shadow-[${shadowX}px_${shadowY}px_${blurRad}px_${blurSpread}px_rgba(
+                  ${Math.floor(color.rgb.r)},${Math.floor(color.rgb.g)},
+                  ${Math.floor(color.rgb.b)},
+                  ${Math.round(color.rgb.a * 100) / 100});]`
               );
             }}
             className="border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
@@ -51,8 +57,8 @@ export default function BoxShadow() {
             Copy Tailwind
           </button>
         </div>
-      </div>
-      <div className="w-1/2 p-6  flex flex-col items-center border-2 border-gray-light rounded-md">
+      </section>
+      <section className="w-1/2 p-6  flex flex-col items-center border-2 border-gray-light rounded-md">
         <h1 className="text-center text-3xl pb-8 font-bold text-blue">
           Box Shadow
         </h1>
@@ -75,7 +81,7 @@ export default function BoxShadow() {
           </div>
           <ColorPicker hideInput={["hsv"]} color={color} onChange={setColor} />
         </div>
-      </div>
+      </section>
     </>
   );
 }
