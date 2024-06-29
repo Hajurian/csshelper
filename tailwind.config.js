@@ -1,3 +1,5 @@
+const { transform } = require("next/dist/build/swc");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,6 +8,21 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    extend: {
+      keyframes: {
+        typewriter: {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "100",
+          },
+        },
+      },
+      animation: {
+        typewriter: "typewriter 500ms  infinite",
+      },
+    },
     screens: {
       sm: "480px",
       md: "768px",
@@ -28,5 +45,5 @@ module.exports = {
       white: "#fff",
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animated")],
 };

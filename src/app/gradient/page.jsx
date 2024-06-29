@@ -128,14 +128,12 @@ export default function Gradient() {
           <input
             type="text"
             className="w-16 border-x border-y border-gray-dark rounded-lg text-gray-dark p-2 text-center"
-            value={degrees}
+            value={`${degrees}`}
             onChange={(e) => {
-              if (e.target.value.length > 3) {
-                return;
-              }
               setDegrees(e.target.value);
             }}
           />
+          <span className="text-2xl">°</span>
           <button
             onClick={() => {
               setLinearToggle(!linearToggle);

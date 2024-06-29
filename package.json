@@ -12,7 +12,8 @@
     "next": "14.2.4",
     "react": "^18",
     "react-color-palette": "^7.1.1",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwindcss-animated": "^1.1.2"
   },
   "devDependencies": {
     "eslint": "^8",
