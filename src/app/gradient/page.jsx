@@ -1,25 +1,29 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ColorPicker, Hue, useColor } from "react-color-palette";
+import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 export default function Gradient() {
   const [color, setColor] = useColor("#1fb6ff");
   const [degrees, setDegrees] = useState("0");
   const [linearToggle, setLinearToggle] = useState(true);
+  const [position, setPosition] = useState("0");
   const [gradientColors, setGradientColors] = useState([
     {
       hex: "#1fb6ff",
       rgb: { r: 31, g: 182, b: 255, a: 1 },
       hsv: { h: 200, s: 100, v: 100, a: 1 },
+      position: "0",
       id: "firstID",
     },
     {
       hex: "#0000ff",
       rgb: { r: 0, g: 0, b: 255, a: 1 },
       hsv: { h: 240, s: 100, v: 100, a: 1 },
+      position: "100",
       id: "#secondID",
     },
   ]);
+  const [gradient, setGradient] = useState("");
   //Active state
   const [active, setActive] = useState(gradientColors[0].id);
 
@@ -40,13 +44,55 @@ export default function Gradient() {
             hex: color.hex,
             rgb: color.rgb,
             hsv: color.hsv,
+            position: gradient.position,
             id: gradient.id,
           };
         }
       })
     );
   }, [color]);
-
+  //Changes the position of the active value
+  useEffect(() => {
+    setGradientColors(
+      gradientColors.map((gradient) => {
+        if (gradient.id != active) {
+          return gradient;
+        } else {
+          return {
+            hex: color.hex,
+            rgb: color.rgb,
+            hsv: color.hsv,
+            position: position,
+            id: gradient.id,
+          };
+        }
+      })
+    );
+  }, [position]);
+  //Changes gradient text
+  useEffect(() => {
+    let text = `${linearToggle ? "linear" : "radial"}-gradient(${
+      linearToggle ? `${degrees}deg` : "circle"
+    }, `;
+    for (let i in gradientColors) {
+      let rgba;
+      if (i != gradientColors.length - 1) {
+        rgba = `rgba(${Math.floor(gradientColors[i].rgb.r)},${Math.floor(
+          gradientColors[i].rgb.g
+        )},${Math.floor(gradientColors[i].rgb.b)},${Math.floor(
+          gradientColors[i].rgb.a
+        )}) ${gradientColors[i].position}%, `;
+      } else {
+        rgba = `rgba(${Math.floor(gradientColors[i].rgb.r)},${Math.floor(
+          gradientColors[i].rgb.g
+        )},${Math.floor(gradientColors[i].rgb.b)},${Math.floor(
+          gradientColors[i].rgb.a
+        )}) ${gradientColors[i].position}%)`;
+      }
+      text += rgba;
+    }
+    setGradient(text);
+  }, [gradientColors, linearToggle, degrees]);
   //setting the color picker to the first color value
   useEffect(() => {
     gradientColors.map((gradient) => {
@@ -68,10 +114,12 @@ export default function Gradient() {
               <ColorInput
                 key={id}
                 id={gradient.id}
+                position={gradient.position}
                 setActive={setActive}
                 color={gradient}
                 remove={removeColor}
                 gradientColors={gradientColors}
+                setPosition={setPosition}
               />
             );
           })}
@@ -104,6 +152,7 @@ export default function Gradient() {
                   hex: gradientColors[0].hex,
                   rgb: gradientColors[0].rgb,
                   hsv: gradientColors[0].hsv,
+                  position: "50",
                   id: Math.floor(Math.random() * 10000000 + 10000000),
                 },
               ]);
@@ -119,34 +168,46 @@ export default function Gradient() {
         <div
           className="border-2 h-[16rem] my-auto"
           style={{
-            background: `${linearToggle ? "linear" : "radial"}-gradient(${
-              linearToggle ? `${degrees}deg` : "circle"
-            }, rgba(${gradientColors[0].rgb.r},${gradientColors[0].rgb.g},${
-              gradientColors[0].rgb.b
-            },${gradientColors[0].rgb.a}) 0%,
-              rgba(${gradientColors[1].rgb.r},${gradientColors[1].rgb.g},${
-              gradientColors[1].rgb.b
-            },${gradientColors[1].rgb.a}) 100%)`,
+            background: `${gradient}`,
           }}
         ></div>
-        <div className="rounded-lg h-[16rem] my-auto bg-code"></div>
+        <div className="rounded-lg h-[16rem] p-4 my-auto bg-code text-gray-light text-xl">
+          <span className="text-code-text">background:</span> {gradient};
+        </div>
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(`background: ${gradient};`);
+          }}
+          className="border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
+        >
+          Copy CSS
+        </button>
       </section>
     </main>
   );
 }
 const ColorInput = (props) => {
-  let { id, color, setActive } = props;
+  let { id, color, setActive, position, setPosition } = props;
   return (
     <div className="flex">
       <input
         type="range"
         id={id}
-        className="w-full"
+        value={position}
+        className="w-full cursor-pointer"
         style={{ accentColor: color.hex }}
         onClick={(e) => {
           setActive(e.target.id);
         }}
+        onChange={(e) => {
+          setPosition(e.target.value);
+        }}
+        min={0}
+        max={100}
       />
+      <button className="mx-1 w-[3rem] text-gray-dark">
+        {position ? position.toString() : ""}%
+      </button>
       <button
         onClick={() => {
           if (props.gradientColors.length == 2) {
@@ -156,8 +217,9 @@ const ColorInput = (props) => {
             id: id,
           });
         }}
+        className="mx-1 w-[1.5rem] text-gray-dark"
       >
-        Remove
+        X
       </button>
     </div>
   );
