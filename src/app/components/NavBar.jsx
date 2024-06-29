@@ -24,7 +24,9 @@ export default function Navbar() {
       <div className="h-full flex">
         <Link
           href="/gradient"
-          className={`links ${active == "Gradient" ? "border-b-4" : ""}`}
+          className={`links ${
+            active == "Gradient" ? "border-b-4 text-blue" : ""
+          }`}
           onClick={() => {
             setActive("Gradient");
           }}
@@ -33,7 +35,9 @@ export default function Navbar() {
         </Link>
         <Link
           href="/boxshadow"
-          className={`links ${active == "BoxShadow" ? "border-b-4" : ""}`}
+          className={`links ${
+            active == "BoxShadow" ? "border-b-4 text-blue" : ""
+          }`}
           onClick={() => {
             setActive("BoxShadow");
           }}
@@ -43,7 +47,7 @@ export default function Navbar() {
         <Link
           href="/colorpicker"
           className={`links mr-16 ${
-            active == "ColorPicker" ? "border-b-4" : ""
+            active == "ColorPicker" ? "border-b-4 text-blue" : ""
           }`}
           onClick={() => {
             setActive("ColorPicker");

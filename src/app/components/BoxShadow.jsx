@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
+import { MdContentCopy } from "react-icons/md";
 import "react-color-palette/css";
 
 export default function BoxShadow() {
@@ -39,9 +40,9 @@ export default function BoxShadow() {
                   ${Math.round(color.rgb.a * 100) / 100});`
               );
             }}
-            className="border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
+            className="font-bold flex items-center justify-center py-2 border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
           >
-            Copy CSS
+            <MdContentCopy color={"#d3dce6"} /> Copy CSS
           </button>
           <button
             onClick={() => {
@@ -52,9 +53,9 @@ export default function BoxShadow() {
                   ${Math.round(color.rgb.a * 100) / 100});]`
               );
             }}
-            className="border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
+            className="font-bold flex items-center justify-center py-2 border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
           >
-            Copy Tailwind
+            <MdContentCopy color={"#d3dce6"} /> Copy Tailwind
           </button>
         </div>
       </section>
@@ -104,7 +105,7 @@ const Box = (props) => {
 };
 const TextBox = (props) => {
   return (
-    <div className="w-full h-32 bg-code  rounded-3xl cursor-pointer p-4 hover:scale-105 transition-all inset-4 shadow-md shadow-code">
+    <div className="w-full h-32 mb-4 bg-code  rounded-3xl cursor-pointer p-4 hover:scale-105 transition-all inset-4 shadow-md shadow-code">
       <p className="text-white text-xl leading-9">
         <span className="text-code-text">box-shadow</span>: {props.shadowX}px{" "}
         {props.shadowY}px {props.blurRad}px {props.blurSpread}px rgba(

@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
+import { MdContentCopy } from "react-icons/md";
+import { IoIosAdd } from "react-icons/io";
 import "react-color-palette/css";
 export default function Gradient() {
   const [color, setColor] = useColor("#1fb6ff");
@@ -138,7 +140,7 @@ export default function Gradient() {
             onClick={() => {
               setLinearToggle(!linearToggle);
             }}
-            className="border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
+            className="font-bold border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
           >
             {linearToggle ? "Linear" : "Radial"}
           </button>
@@ -155,7 +157,7 @@ export default function Gradient() {
                 },
               ]);
             }}
-            className="border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
+            className="font-bold border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
           >
             Add
           </button>
@@ -176,9 +178,9 @@ export default function Gradient() {
           onClick={() => {
             navigator.clipboard.writeText(`background: ${gradient};`);
           }}
-          className="border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
+          className="font-bold flex items-center justify-center py-2 border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
         >
-          Copy CSS
+          <MdContentCopy color={"#d3dce6"} /> Copy CSS
         </button>
       </section>
     </main>
