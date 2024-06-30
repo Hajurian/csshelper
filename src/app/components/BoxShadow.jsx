@@ -74,7 +74,7 @@ export default function BoxShadow() {
             <input
               type="checkbox"
               checked={inset}
-              onClick={() => {
+              onChange={() => {
                 setInset(!inset);
               }}
               className="mr-auto accent-blue"
