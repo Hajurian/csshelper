@@ -4,6 +4,6 @@
 
 @layer components {
   .links {
-    @apply flex justify-center items-center w-32 text-lg text-gray-dark font-bold hover:bg-gray-light transition-all;
+    @apply flex justify-center items-center w-14 sm:w-16 text-center text-[0.6rem] sm:text-[.75rem] xxl:w-32 xxl:text-lg text-gray-dark font-bold hover:bg-gray-light transition-all;
   }
 }

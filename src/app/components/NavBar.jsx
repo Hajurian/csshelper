@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Navbar() {
   const [active, setActive] = useState("Home");
   return (
-    <nav className="w-full h-24 flex items-center mb-4 border-b border-gray-light">
+    <nav className="w-full h-24 flex items-center mb-4 border-b border-gray-light animate-fade-down">
       <Link
         href="/"
         className={`mr-auto`}
@@ -46,7 +46,7 @@ export default function Navbar() {
         </Link>
         <Link
           href="/colorpicker"
-          className={`links mr-16 ${
+          className={`links mr-4 sm:mr-8 md:mr-12 lg:mr-16 xxl:mr-16 ${
             active == "ColorPicker" ? "border-b-4 text-blue" : ""
           }`}
           onClick={() => {
