@@ -108,8 +108,27 @@ export default function Gradient() {
     });
   }, [active]);
   return (
-    <main className=" w-full h-screen flex justify-center">
-      <section className="border-2 border-gray-light w-[32rem] mr-16 h-[40rem] rounded-lg p-4">
+    <main className=" w-full h-screen flex flex-col mt-[10rem] p-4 lg:p-0 lg:mt-0 lg:flex-row lg:items-start justify-center items-center">
+      <section className="border-2 border-gray-light w-full mb-4 md:w-3/5 lg:w-1/3 lg:mr-16 h-[40rem] rounded-lg p-4 flex flex-col opacity-0 animate-fade-down">
+        <div
+          className="border-2 mb-2 w-full lg:mb-0 h-[12rem] lg:h-[16rem] my-auto animate-expand cursor-pointer hover:scale-105 transition-all"
+          style={{
+            background: `${gradient}`,
+          }}
+        ></div>
+        <div className="rounded-lg h-[10rem] lg:h-[16rem] p-4 my-auto bg-code text-gray-light text-xl cursor-pointer hover:scale-105 transition-all">
+          <span className="text-code-text">background:</span> {gradient};
+        </div>
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(`background: ${gradient};`);
+          }}
+          className="buttons"
+        >
+          <MdContentCopy color={"#d3dce6"} /> Copy CSS
+        </button>
+      </section>
+      <section className="border-2 border-gray-light w-full mb-4 md:w-3/5 lg:w-1/3 lg:mr-16 h-[40rem] rounded-lg p-4 animate-fade-down">
         <div className="flex flex-col h-[8rem] w-full overflow-scroll overflow-x-hidden">
           {gradientColors.map((gradient, id) => {
             return (
@@ -163,25 +182,6 @@ export default function Gradient() {
           </button>
         </div>
         <ColorPicker hideInput={["hsv"]} color={color} onChange={setColor} />
-      </section>
-      <section className="border-2 border-gray-light w-[32rem] h-[40rem] rounded-lg p-4 flex flex-col">
-        <div
-          className="border-2 h-[16rem] my-auto"
-          style={{
-            background: `${gradient}`,
-          }}
-        ></div>
-        <div className="rounded-lg h-[16rem] p-4 my-auto bg-code text-gray-light text-xl">
-          <span className="text-code-text">background:</span> {gradient};
-        </div>
-        <button
-          onClick={() => {
-            navigator.clipboard.writeText(`background: ${gradient};`);
-          }}
-          className="font-bold flex items-center justify-center py-2 border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
-        >
-          <MdContentCopy color={"#d3dce6"} /> Copy CSS
-        </button>
       </section>
     </main>
   );

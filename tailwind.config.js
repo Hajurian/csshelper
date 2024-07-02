@@ -31,7 +31,7 @@ module.exports = {
       },
       animation: {
         typewriter: "typewriter 500ms  infinite",
-        expand: "expand 500ms",
+        expand: "expand 1.5s",
       },
     },
     screens: {

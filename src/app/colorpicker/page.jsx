@@ -6,7 +6,7 @@ export default function ColorPage() {
   const [color, setColor] = useColor("#1fb6ff");
   return (
     <main className="w-screen h-screen flex justify-center">
-      <section className="w-4/5 h-full flex justify-center animate-expand">
+      <section className="w-4/5 h-full flex justify-center animate-fade-down">
         <div className="w-[20rem] md:w-[25rem] lg:w-[25rem] xxl:w-1/3 h-max p-8 flex flex-col border-2 border-gray-light rounded-md">
           <h1 className="text-center mb-4 text-2xl xxl:text-5xl text-blue font-extrabold">
             Color Picker

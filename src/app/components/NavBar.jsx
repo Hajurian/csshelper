@@ -46,7 +46,7 @@ export default function Navbar() {
         </Link>
         <Link
           href="/colorpicker"
-          className={`links mr-4 sm:mr-8 md:mr-12 lg:mr-16 xxl:mr-16 ${
+          className={`links  ${
             active == "ColorPicker" ? "border-b-4 text-blue" : ""
           }`}
           onClick={() => {
@@ -54,6 +54,17 @@ export default function Navbar() {
           }}
         >
           Color Picker
+        </Link>
+        <Link
+          href="/about"
+          className={`links mr-4 sm:mr-8 md:mr-12 lg:mr-16 xxl:mr-16 ${
+            active == "About" ? "border-b-4 text-blue" : ""
+          }`}
+          onClick={() => {
+            setActive("About");
+          }}
+        >
+          About
         </Link>
       </div>
     </nav>

@@ -13,7 +13,7 @@ export default function BoxShadow() {
   const [inset, setInset] = useState(false);
   return (
     <>
-      <section className="w-full lg:w-1/2 h-[45rem] xxl:h-[55rem] p-8 mb-4 lg:mr-4 flex flex-col items-center border-2 border-gray-light rounded-md opacity-0 animate-expand animate-delay-300 animate-fill-forwards">
+      <section className="w-full lg:w-1/2 h-[45rem] xxl:h-[55rem] p-8 mb-4 lg:mr-4 flex flex-col items-center border-2 border-gray-light rounded-md animate-fade-down">
         <Box
           shadowX={shadowX}
           shadowY={shadowY}
@@ -59,7 +59,7 @@ export default function BoxShadow() {
           </button>
         </div>
       </section>
-      <section className="w-full lg:w-1/2 h-[45rem] xxl:h-[55rem] p-6  flex flex-col items-center border-2 border-gray-light rounded-md opacity-0 animate-expand animate-delay-300 animate-fill-forwards">
+      <section className="w-full lg:w-1/2 h-[55rem] xxl:h-[55rem] p-6  flex flex-col items-center border-2 border-gray-light rounded-md animate-fade-down">
         <h1 className="text-center text-3xl pb-8 font-bold text-blue">
           Box Shadow
         </h1>
@@ -67,7 +67,7 @@ export default function BoxShadow() {
         <Input type="Vertical Length" state={shadowY} setState={setShadowY} />
         <Input type="Blur Radius" state={blurRad} setState={setBlurRad} />
         <Input type="Blur Spread" state={blurSpread} setState={setBlurSpread} />
-        <div className="w-1/2 flex flex-col">
+        <div className="w-full xl:w-1/2 flex flex-col">
           <div className="flex">
             <label className="text-lg mr-auto">Color</label>
             <label className="text-lg mr-2">Inset</label>
@@ -80,7 +80,13 @@ export default function BoxShadow() {
               className="mr-auto accent-blue"
             />
           </div>
-          <ColorPicker hideInput={["hsv"]} color={color} onChange={setColor} />
+          <div className="w-full">
+            <ColorPicker
+              hideInput={["hsv"]}
+              color={color}
+              onChange={setColor}
+            />
+          </div>
         </div>
       </section>
     </>
@@ -128,7 +134,7 @@ const TextBox = (props) => {
 const Input = (props) => {
   return (
     <>
-      <div className="w-1/2 h-8 flex mt-2 mb-2 text-lg">
+      <div className="w-full md:w-1/2 h-8 flex mt-2 mb-2 text-lg">
         <label className="w-36 mr-auto">{props.type}</label>
         <input
           type="text"
