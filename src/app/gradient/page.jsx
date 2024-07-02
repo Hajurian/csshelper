@@ -108,7 +108,7 @@ export default function Gradient() {
     });
   }, [active]);
   return (
-    <main className=" w-full h-screen flex flex-col mt-[10rem] p-4 lg:p-0 lg:mt-0 lg:flex-row lg:items-start justify-center items-center">
+    <main className=" w-full h-screen flex flex-col mt-[15rem] p-4 lg:p-0 lg:mt-0 lg:flex-row lg:items-start justify-center items-center">
       <section className="border-2 border-gray-light w-full mb-4 md:w-3/5 lg:w-1/3 lg:mr-16 h-[40rem] rounded-lg p-4 flex flex-col opacity-0 animate-fade-down">
         <div
           className="border-2 mb-2 w-full lg:mb-0 h-[12rem] lg:h-[16rem] my-auto animate-expand cursor-pointer hover:scale-105 transition-all"
