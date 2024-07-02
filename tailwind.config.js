@@ -1,4 +1,4 @@
-const { transform } = require("next/dist/build/swc");
+const { transform, transformSync } = require("next/dist/build/swc");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -18,9 +18,20 @@ module.exports = {
             opacity: "100",
           },
         },
+        expand: {
+          "0%": {
+            opacity: "0",
+            transform: "scale(0)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
       },
       animation: {
         typewriter: "typewriter 500ms  infinite",
+        expand: "expand 500ms",
       },
     },
     screens: {

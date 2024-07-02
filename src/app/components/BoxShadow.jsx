@@ -13,7 +13,7 @@ export default function BoxShadow() {
   const [inset, setInset] = useState(false);
   return (
     <>
-      <section className="w-1/2 p-8 mr-4 flex flex-col items-center border-2 border-gray-light rounded-md">
+      <section className="w-full lg:w-1/2 h-[45rem] xxl:h-[55rem] p-8 mb-4 lg:mr-4 flex flex-col items-center border-2 border-gray-light rounded-md opacity-0 animate-expand animate-delay-300 animate-fill-forwards">
         <Box
           shadowX={shadowX}
           shadowY={shadowY}
@@ -30,7 +30,7 @@ export default function BoxShadow() {
           inset={inset}
           color={color}
         />
-        <div className="w-full h-16 mt-2 flex">
+        <div className="w-full h-16 xxl:mt-2 flex flex-col">
           <button
             onClick={() => {
               navigator.clipboard.writeText(
@@ -40,7 +40,7 @@ export default function BoxShadow() {
                   ${Math.round(color.rgb.a * 100) / 100});`
               );
             }}
-            className="font-bold flex items-center justify-center py-2 border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
+            className="buttons"
           >
             <MdContentCopy color={"#d3dce6"} /> Copy CSS
           </button>
@@ -53,13 +53,13 @@ export default function BoxShadow() {
                   ${Math.round(color.rgb.a * 100) / 100});]`
               );
             }}
-            className="font-bold flex items-center justify-center py-2 border-2 w-1/3 mx-auto rounded-xl bg-blue border-none text-background text-2xl cursor-pointer  hover:scale-105 transition-all shadow-md shadow-code"
+            className="buttons"
           >
             <MdContentCopy color={"#d3dce6"} /> Copy Tailwind
           </button>
         </div>
       </section>
-      <section className="w-1/2 p-6  flex flex-col items-center border-2 border-gray-light rounded-md">
+      <section className="w-full lg:w-1/2 h-[45rem] xxl:h-[55rem] p-6  flex flex-col items-center border-2 border-gray-light rounded-md opacity-0 animate-expand animate-delay-300 animate-fill-forwards">
         <h1 className="text-center text-3xl pb-8 font-bold text-blue">
           Box Shadow
         </h1>
@@ -90,7 +90,7 @@ export default function BoxShadow() {
 const Box = (props) => {
   return (
     <div
-      className={`w-2/5 h-1/3 mb-32 border-2 border-code flex justify-center items-center text-2xl cursor-pointer hover:scale-105 transition-all text-blue `}
+      className={`w-[12rem] h-[12rem] mb-16 xxl:mb-32 border-2 border-code flex justify-center items-center text-2xl cursor-pointer hover:scale-105 transition-all text-blue `}
       style={{
         boxShadow: `${props.shadowX}px ${props.shadowY}px ${props.blurRad}px ${
           props.blurSpread
@@ -105,8 +105,8 @@ const Box = (props) => {
 };
 const TextBox = (props) => {
   return (
-    <div className="w-full h-32 mb-4 bg-code  rounded-3xl cursor-pointer p-4 hover:scale-105 transition-all inset-4 shadow-md shadow-code">
-      <p className="text-white text-xl leading-9">
+    <div className="w-[15rem] lg:w-full h-[8.25rem] xxl:mb-4 bg-code flex flex-col justify-center rounded-3xl cursor-pointer px-4 hover:scale-105 transition-all inset-4 shadow-md shadow-code">
+      <p className="text-white text-xs xxl:text-xl leading-9">
         <span className="text-code-text">box-shadow</span>: {props.shadowX}px{" "}
         {props.shadowY}px {props.blurRad}px {props.blurSpread}px rgba(
         {Math.floor(props.color.rgb.r)},{Math.floor(props.color.rgb.g)},
@@ -114,7 +114,7 @@ const TextBox = (props) => {
         {Math.round(props.color.rgb.a * 100) / 100}){" "}
         {props.inset ? "inset" : ""};
       </p>
-      <p className="text-white text-xl leading-9">
+      <p className="text-white text-xs xxl:text-xl leading-9">
         <span className="text-code-text ">shadow</span>-[{props.shadowX}px_
         {props.shadowY}px_{props.blurRad}px_{props.blurSpread}px_rgba(
         {Math.floor(props.color.rgb.r)},{Math.floor(props.color.rgb.g)},
